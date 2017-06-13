@@ -12,6 +12,15 @@ module ManageIQ::Providers::Kubernetes::ContainerManagerMixin
       # checking `provider.port` first prevents this from overriding it.
       provider.port || provider.class::DEFAULT_PORT
     end
+
+    before_create :ensure_managers
+    before_update :ensure_managers_properties
+  end
+
+  def monitoring_manager_needed?
+    connection_configurations.roles.include?(
+        ManageIQ::Providers::Kubernetes::MonitoringManagerMixin::ENDPOINT_ROLE
+    )
   end
 
   def supports_metrics?

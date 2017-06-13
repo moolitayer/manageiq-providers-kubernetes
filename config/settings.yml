@@ -41,6 +41,10 @@
             - POD_HOSTPORTCONFLICT
     :open_timeout: 60.seconds
     :read_timeout: 60.seconds
+  :ems_monitoring:
+    :alerts_collection:
+      :open_timeout: 10.seconds
+      :timeout: 20.seconds
 :http_proxy:
   :kubernetes:
     :host:
