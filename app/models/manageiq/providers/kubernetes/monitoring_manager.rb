@@ -1,5 +1,7 @@
 module ManageIQ::Providers
   class Kubernetes::MonitoringManager < ManageIQ::Providers::MonitoringManager
+    require_nested :EventCatcher
+
     include ManageIQ::Providers::Kubernetes::MonitoringManagerMixin
 
     belongs_to :parent_manager,
